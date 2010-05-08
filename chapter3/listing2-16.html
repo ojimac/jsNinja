@@ -1,0 +1,29 @@
+<html>
+<head>
+<script src="./assert.js"></script>
+<script>
+window.onload = function(){
+
+function getElements( name ) {
+  return getElements.cache[ name ] = getElements.cache[ name ] || 
+    document.getElementsByTagName( name );
+  //return document.getElementsByTagName( name );
+} 
+getElements.cache = {};
+
+// 2回目以降はgetElementsByTagNameメソッドを実行せずcacheプロパティに
+// 入っている値を返すだけなので早い
+//for( var i=0; i<1000; i++){
+getElements("ul");
+//}
+}
+</script>
+<style>
+#results li.pass { color: green; }
+#results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

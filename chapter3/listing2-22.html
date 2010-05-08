@@ -1,0 +1,34 @@
+<html>
+<head>
+<script src="./assert.js"></script>
+<style>
+#results li.pass { color: green; }
+#results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+<input id="first"/><input id="second"/> 
+<script>
+window.onload = function(){
+var elems = { 
+  find: function(id){ 
+    this.add( document.getElementById(id) );
+  },
+  length: 0,
+  add: function(elem){
+    Array.prototype.push.call( this, elem );
+  }
+};
+
+elems.find("first");
+assert( elems.length == 1 && elems[0].nodeType,
+  "Verify that we have an element in our stash" );
+
+elems.find("second");
+assert( elems.length == 2 && elems[1].nodeType,
+  "Verify the other insertion" );
+}
+</script>
+</body>
+</html>

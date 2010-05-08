@@ -1,0 +1,24 @@
+<html>
+<head>
+<script src="./assert.js"></script>
+<script>
+window.onload = function(){
+
+function add(a, b){ 
+  return a + b; 
+}
+assert( add.call(this, 1, 2) == 3, 
+  ".call() takes individual arguments" );
+assert( add.apply(this, [1, 2]) == 3, 
+  ".apply() takes an array of arguments" );
+}
+</script>
+<style>
+#results li.pass { color: green; }
+#results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

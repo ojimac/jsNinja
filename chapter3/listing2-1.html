@@ -1,0 +1,22 @@
+<html>
+  <head>
+	<script src="./assert.js"></script>
+	<script>
+	  function isNible(){ return true; }
+	  var canFly = function(){ return true; }
+	  window.isDeadly = function(){ return true; }
+
+	  window.onload = function() {
+	  assert( isNible() && canFly() && isDeadly(),
+	  "All are functions, all return true" );
+	  };
+	</script>
+	<style>
+	  #results li.pass { color: green; }
+	  #results li.fail { color: red; }
+	</style>
+  </head>
+  <body>
+	<ul id="results"></ul>
+  </body>
+</html>

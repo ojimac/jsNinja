@@ -1,0 +1,22 @@
+<html>
+  <head>
+	<script src="./assert.js"></script>
+	<script>
+	  function yell(n){
+	  return n > 0 ? yell(n-1) + "a" : "hiy";
+	  }
+
+	  window.onload = function(){
+	  assert( yell(4) == "hiyaaaa",
+	  "Calling the function by itself comes natrally." );
+	  }
+	</script>
+	<style>
+	  #results li.pass { color: green; }
+	  #results li.fail { color: red; }
+	</style>
+  </head>
+  <body>
+	<ul id="results"></ul>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+  <head>
+	<script src="./assert.js"></script>
+	<script>
+	  window.onload = function(){
+	  var obj = {}; 
+	  var fn = function(){}; 
+	  obj.prop = "some value"; 
+	  fn.prop = "some value"; 
+	  assert( obj.prop == fn.prop, 
+	  "Both are objects, both have the property." );
+	  }
+	</script>
+	<style>
+	  #results li.pass { color: green; }
+	  #results li.fail { color: red; }
+	</style>
+  </head>
+  <body>
+	<ul id="results"></ul>
+  </body>
+</html>

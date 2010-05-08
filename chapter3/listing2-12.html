@@ -1,0 +1,19 @@
+<html>
+  <head>
+	<script src="./assert.js"></script>
+	<script>
+	  window.onload = function(){
+	  var obj = {}; 
+	  var fn = function(){}; 
+	  assert( obj && fn, "Both the object and function exist." );
+	  }
+	</script>
+	<style>
+	  #results li.pass { color: green; }
+	  #results li.fail { color: red; }
+	</style>
+  </head>
+  <body>
+	<ul id="results"></ul>
+  </body>
+</html>

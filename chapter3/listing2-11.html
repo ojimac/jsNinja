@@ -1,0 +1,23 @@
+<html>
+  <head>
+	<script src="./assert.js"></script>
+	<script>
+	  window.onload = function(){
+	  var ninja = {
+	  yell: function(n){
+	  return n > 0 ? arguments.callee(n-1) + "a" : "hiy";
+	  }
+	  };
+	  assert( ninja.yell(4) == "hiyaaaa",
+	  "arguments.callee is the function itself.");
+	  }
+	</script>
+	<style>
+	  #results li.pass { color: green; }
+	  #results li.fail { color: red; }
+	</style>
+  </head>
+  <body>
+	<ul id="results"></ul>
+  </body>
+</html>

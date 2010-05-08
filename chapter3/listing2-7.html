@@ -1,0 +1,24 @@
+<html>
+  <head>
+	<script src="./assert.js"></script>
+	<script>
+	  var ninja = {
+	  yell: function(n){
+	  return n > 0 ? ninja.yell(n-1) + "a" : "hiy";
+	  }
+	  }; 
+
+	  window.onload = function(){
+	  assert( ninja.yell(4) == "hiyaaaa",
+	  "A single obuject isn't too bad, either." );
+	  }
+	</script>
+	<style>
+	  #results li.pass { color: green; }
+	  #results li.fail { color: red; }
+	</style>
+  </head>
+  <body>
+	<ul id="results"></ul>
+  </body>
+</html>

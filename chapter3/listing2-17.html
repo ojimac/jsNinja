@@ -1,0 +1,26 @@
+<html>
+<head>
+<script src="./assert.js"></script>
+<script>
+window.onload = function(){
+var katana = { 
+  isSharp: true, 
+  use: function(){
+	// このときのthisは「Object { isSharp=true }」となっていた
+    this.isSharp = !this.isSharp; 
+  } 
+}; 
+katana.use() 
+assert( !katana.isSharp, 
+  "Verify the value of isSharp has been changed." );
+}
+</script>
+<style>
+#results li.pass { color: green; }
+#results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

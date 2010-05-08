@@ -1,0 +1,28 @@
+<html>
+<head>
+<script src="./assert.js"></script>
+<script>
+window.onload = function(){
+
+var object = {}; 
+function fn(){
+return this;
+}
+
+assert( fn() == this, "The context is the global object." );
+// objectオブジェクトからfn関数をcall
+// objectオブジェクト内のthisはオブジェクト!
+assert( fn.call(object) == object, 
+  "The context is changed to a specific object." );
+
+}
+</script>
+<style>
+#results li.pass { color: green; }
+#results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+  <head>
+	<script src="./assert.js"></script>
+	<script>
+	  window.onload = function(){
+	  var ninja = {
+	  yell: function yell(n){
+	  return n > 0 ? ninja.yell(n-1) + "a" : "hiy";
+	  }
+	  };
+
+	  assert( ninja.yell(4) == "hiyaaaa",
+	  "Works as we would expect it to!" );
+	  var samurai = { yell: ninja.yell };
+	  var ninja = {
+	  yell: function yell(n){
+	  return n > 0 ? ninja.yell(n-1) + "a" : "hiy";
+	  }
+	  };
+	  assert( samurai.yell(4) == "hiyaaaa",
+	  "The method correctly calss itself." );
+	  }
+	</script>
+	<style>
+	  #results li.pass { color: green; }
+	  #results li.fail { color: red; }
+	</style>
+  </head>
+  <body>
+	<ul id="results"></ul>
+  </body>
+</html>

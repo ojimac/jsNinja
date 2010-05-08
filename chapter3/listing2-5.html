@@ -1,0 +1,19 @@
+<html>
+  <head>
+	<script>
+var obj = {
+someMethod: function(){
+alert('hoge');
+return true;
+}
+};
+
+// 10秒毎にobjオブジェクトのsomeMethodプロパティをコール
+setInterval(function(){
+ obj.someMethod();
+}, 10000);
+	</script>
+  </head>
+  <body>
+  </body>
+</html>

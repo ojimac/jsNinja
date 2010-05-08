@@ -1,0 +1,20 @@
+<html>
+<head>
+<script src="./assert.js"></script>
+<script>
+function ninja(){} 
+
+window.onload = function(){
+assert( typeof ninja == "function", 
+  "Functions have a type of function" );
+}
+</script>
+<style>
+#results li.pass { color: green; }
+#results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

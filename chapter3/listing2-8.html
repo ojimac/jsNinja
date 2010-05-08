@@ -1,0 +1,30 @@
+<html>
+  <head>
+	<script src="./assert.js"></script>
+	<script>
+	  /* サムライオブジェクトからニンジャオブジェクトのyellメソッドを
+	   * 呼び出そうとしているが，undefinedになってしまう
+	   */
+	  window.onload = function(){
+		  try {
+			  var samurai = { yell: ninja.yell(4) };
+			  var ninja = {
+				  yell: function(n){
+				  	return n > 0 ? ninja.yell(n-1) + "a" : "hiy";
+			  	  }
+		  	  };
+			this.samurai.yell(4);
+	  	  }catch(e){
+	  		  assert( "Uh, this isn't good! Where'd ninja.yell go?" );
+	      }
+	  }
+	</script>
+	<style>
+	  #results li.pass { color: green; }
+	  #results li.fail { color: red; }
+	</style>
+  </head>
+  <body>
+	<ul id="results"></ul>
+  </body>
+</html>

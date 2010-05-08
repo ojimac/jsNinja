@@ -1,0 +1,21 @@
+<html>
+<head>
+<script src="./assert.js"></script>
+<script>
+function makeNinja(name){} 
+function makeSamurai(name, rank){}
+
+window.onload = function(){
+assert( makeNinja.length == 1, "Only expecting a single argument" ); 
+assert( makeSamurai.length == 2, "Multiple arguments expected" );
+}
+</script>
+<style>
+#results li.pass { color: green; }
+#results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

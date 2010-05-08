@@ -1,0 +1,25 @@
+<html>
+<head>
+<script src="./assert.js"></script>
+<script>
+function smallest(array){ 
+  return Math.min.apply( Math, array ); 
+} 
+function largest(array){ 
+  return Math.max.apply( Math, array ); 
+}
+
+window.onload = function(){
+assert(smallest([0, 1, 2, 3]) == 0, "Locate the smallest value."); 
+assert(largest([0, 1, 2, 3]) == 3, "Locate the largest value.");
+}
+</script>
+<style>
+#results li.pass { color: green; }
+#results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

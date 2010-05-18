@@ -18,6 +18,7 @@
 	this.resume = function(){
 		paused = false;
 		setTimeout(runTest, 1);
+		//runTest();
 	};
 
 	function runTest(){
@@ -53,14 +54,16 @@ window.onload = function() {
 		setTimeout(function() {
 			assert( true, "First assertion completed" );
 			resume();
-		}, 1000);
+		}, 2000);
 	});
 
 	test("Async test #2", function(){
-		pause();
-		setTimeout(function(){
+		//pause();
+		resume();
+
+		//setTimeout(function(){
 			assert( true, "Second test completed" );
 			resume();
-		}, 1000);
+		//}, 1000);
 	});
 };

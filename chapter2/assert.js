@@ -4,8 +4,3 @@ function assert( value, desc ) {
 	li.appendChild( document.createTextNode( desc ) );
 	document.getElementById("results").appendChild( li );
 }
-
-window.onload = function() {
-	assert( true, "The test suite is running. " );
-	assert( false, "Fail!" );
-}

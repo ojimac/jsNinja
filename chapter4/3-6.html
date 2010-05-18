@@ -1,0 +1,36 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+<button id="test">Click Me!</button>
+<ul id="results"></ul>
+<script> 
+function bind(context, name){ 
+  return function(){ 
+    return context[name].apply(context, arguments); 
+  }; 
+}
+
+var Button = { 
+  click: function(){ 
+    this.clicked = true; 
+  } 
+};
+
+var elem = document.getElementById("test"); 
+//elem.addEventListener("click", bind(Button, "click"), false);
+// ↑を書き換えて，↓のようにしてみました．
+elem.addEventListener("click", function(){
+  Button["click"].apply(Button);
+  assert( Button.clicked,
+    "The clicked property was set on our object" );
+}, false);
+
+</script>
+</body>
+</html>

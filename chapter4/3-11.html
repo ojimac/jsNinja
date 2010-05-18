@@ -1,0 +1,34 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+Function.prototype.partial = function(){ 
+  var fn = this, args = Array.prototype.slice.call(arguments); 
+  return function(){ 
+    var arg = 0;
+    for ( var i = 0; i < args.length && arg < arguments.length; i++ ) 
+      if ( args[i] === undefined ) 
+        args[i] = arguments[arg++]; 
+    return fn.apply(this, args); 
+  }; 
+};
+
+// 1000ms後に第一引数に入れた関数を実行
+var delay = setTimeout.partial(undefined, 1000);
+
+window.onload = function(){
+delay(function(){ 
+  assert( true, 
+  "A call to this function will be temporarily delayed." ); 
+});
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+<ul id="results"></ul>
+</body>
+</html>

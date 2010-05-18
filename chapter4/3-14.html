@@ -1,0 +1,65 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+// なんかthisだとthisとisPrimeが別々になっちゃって_valuesがキャッシュされない><
+Function.prototype.memoized = function(key){ 
+  //isPrime._values = isPrime._values || {};  
+  this._values = this._values || {}; 
+  //return isPrime._values[key] !== undefined ? 
+  return this._values[key] != undefined ? 
+    //isPrime._values[key] : 
+    this._values[key] : 
+    //isPrime._values[key] = this.apply(isPrime, arguments); 
+    this._values[key] = this.apply(this, arguments); 
+ }; 
+
+// 本ではこうだけど
+//Function.prototype.memoize = function(){
+//  var fn = this;
+//  return function(){
+//    return fn.memoized.apply( fn, arguments );
+//  };
+//};
+
+// forumによると，こう書き換えないと動かない!
+// 確かにそうだった
+Function.prototype.memoize = function(){
+  var fn = this;
+  return function(){
+    // isPrimeの_valuesはmemoizeにて定義!?
+    arguments.callee._values = function(key){
+      if(key) return fn._values[key];
+      else return fn._values;
+    };
+    return fn.memoized.apply( fn, arguments );
+  };
+};
+
+
+var isPrime = (function( num ) {
+  var prime = num != 1;
+  for ( var i = 2; i < num; i++ ) {
+    if ( num % i == 0 ) {
+      prime = false;
+      break;
+    }
+  }
+  return prime;
+}).memoize();
+
+window.onload = function(){
+assert( isPrime(5), "Make sure the function works, 5 is prime." );
+// テストケースもisPrime._values[5] -> isPrime._values(5)に変わってる
+assert( isPrime._values(5), "Make sure the answer is cached." );
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+<ul id="results"></ul>
+</body>
+</html>

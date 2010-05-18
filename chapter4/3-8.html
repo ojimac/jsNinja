@@ -1,0 +1,36 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+
+Function.prototype.partial = function(){ 
+  // 関数オブジェクトをコンテキスト
+  // 引数は配列として扱えるようにする
+  var fn = this, args = Array.prototype.slice.call(arguments); 
+  // クロージャを返す
+  return function(){ 
+    var arg = 0;
+    for ( var i = 0; i < args.length && arg < arguments.length; i++ ) 
+      if ( args[i] === undefined ) 
+        args[i] = arguments[arg++]; 
+    return fn.apply(this, args); 
+	//return String.prototype.split.call(("John, Resig, Boston"), /,\s*/);
+  }; 
+};
+
+//String.prototype.csv = String.prototype.split.partial(/,\s*/);
+String.prototype.csv = String.prototype.split.partial(undefined);
+var results = ("John, Resig, Boston").csv(/,\s*/);
+window.onload = function(){
+assert( results[1] == "Resig","The text values were split properly" ); 
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+<ul id="results"></ul>
+</body>
+</html>

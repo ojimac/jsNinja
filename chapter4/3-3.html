@@ -1,0 +1,25 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+<div></div> 
+<script src="jquery.js"></script> 
+<script> 
+var elem = jQuery("div");
+elem.html("Loading..."); 
+jQuery.ajax({ 
+  url: "test.html", 
+  success: function(html){ 
+    assert( elem, "The element to append to, via a closure." ); 
+    elem.html( html ); 
+  } 
+}); 
+</script>
+</body>
+</html>

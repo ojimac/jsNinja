@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>test</title>
+<script src="assert.js"></script>
+<script src="prototype.js"></script>
+<script>
+function wrap(object, method, wrapper){ 
+  var fn = object[method]; 
+  return object[method] = function(){ 
+    return wrapper.apply(this, [ fn.bind(this) ].concat( 
+      Array.prototype.slice.call(arguments))); 
+  //return (function(orig, elem, attr) { return attr == "title" ? elem.title : orig( elem, attr ); }).apply( this, [fn.bind(this), Element.Methods, "readAttribute", function(orig, elem, attr){return attr == "title" ? elem.title : orig( elem, attr)}] );
+  }; 
+} 
+
+//console.log( Prototype.Browser.Gecko );
+//if (Prototype.Browser.Opera) { 
+//if (Prototype.Browser.Gecko) { 
+  wrap(Element.Methods, "readAttribute", function(orig, elem, attr){ 
+    return attr == "title" ? 
+      elem.title : 
+      orig(elem, attr); 
+  }); 
+//}
+/*
+Element.Methods["readAttribute"] = function(){
+  return function(fn.bind(this), Element.Methods, "readAttribute"){
+    return "readAttribute" == "title" ? 
+      Element.Methods.title : 
+      Element.Methods.readAttribute(Element.Methods, "readAttribute");
+  };
+};
+*/
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head>
+<script src="assert.js"></script>
+</head>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+<div>test</div> 
+<div>test2</div> 
+<script> 
+var div = document.getElementsByTagName("div"); 
+for ( var i = 0; i < div.length; i++ ) (function(i){
+  div[i].addEventListener("click", function(){ 
+    alert( "div #" + i + " was clicked." ); 
+  }, false); 
+})(i);
+</script>
+</body>
+</html>

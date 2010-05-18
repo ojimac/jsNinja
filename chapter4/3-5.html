@@ -1,0 +1,26 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+<button id="test">Click Me!</button> 
+<script> 
+var Button = { 
+  click: function(){ 
+    this.clicked = true; 
+  } 
+}; 
+var elem = document.getElementById("test"); 
+elem.addEventListener("click", Button.click, false); 
+//trigger( elem, "click" );
+elem.click();
+assert( elem.clicked, 
+  "The clicked property was accidentally set on the element" ); 
+</script>
+</body>
+</html>

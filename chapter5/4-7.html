@@ -1,0 +1,31 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+//if (!Array.prototype.forEach) { 
+  Array.prototype.forEach = function(fn, thisp){ // fnはfunction(value, index, array) { ... } の内容
+    for ( var i = 0; i < this.length; i++ ) { 
+      fn.call( thisp || null, this[i], i, this ); // thisは["a", "b", "c"]で，引数は，this[i], i, this
+    } 
+  }; 
+//}
+
+window.onload = function(){
+// 1回目 value -> ["a"], i -> 0, this -> ["a", "b", "c"]
+// 2回目 value -> ["b"], i -> 1, this -> ["a", "b", "c"]
+// 3回目 value -> ["c"], i -> 2, this -> ["a", "b", "c"]
+["a", "b", "c"].forEach(function(value, index, array){
+  assert( value, "Is in position " + index + " out of " + 
+    (array.length - 1) ); 
+});
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

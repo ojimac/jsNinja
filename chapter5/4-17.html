@@ -1,0 +1,21 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+function test(){ 
+    return this instanceof arguments.callee; 
+}
+window.onload = function(){ 
+assert( !test(), "We didn't instantiate, so it returns false." ); 
+assert( new test(), "We did instantiate, returning true." );
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+<ul id="results"></ul>
+</body>
+</html>

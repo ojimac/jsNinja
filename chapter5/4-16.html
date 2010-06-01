@@ -1,0 +1,28 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+function User(first, last){ 
+  if ( !(this instanceof arguments.callee) ) 
+    return new User(first, last); 
+  
+  this.name = first + " " + last; 
+} 
+var name = "Resig"; 
+var user = User("John", name); 
+window.onload = function(){
+assert( user,
+  "This was defined correctly, even if it was by mistake." ); 
+assert( name == "Resig", "The right name was maintained." );
+assert( user.name == "John Resig", "name, user.name is different" ); // that's excepted!
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+<ul id="results"></ul>
+</body>
+</html>

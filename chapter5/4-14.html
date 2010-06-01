@@ -1,0 +1,23 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+function User(first, last){ 
+  this.name = first + " " + last; // newつけないとthisはwindowなのでグローバルスコープに対してuserプロパティをつけることになってしまう...
+} 
+var user = User("John", "Resig"); 
+window.onload = function(){
+console.log( window.name ); // 
+assert( typeof user == "undefined", 
+  "Since new wasn't used, the instance is undefined." );
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+<ul id="results"></ul>
+</body>
+</html>

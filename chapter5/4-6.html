@@ -1,0 +1,39 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+function Person(){ this.test = {'hoge':'fuga'}; } 
+Person.prototype.dance = function(){ this.test2 = {'piyo':'moge'}; }; 
+Person.prototype.dance2 = function(){ this.test3 = {'piyo':'moge'}; }; 
+function Ninja(){ } 
+// Achieve similar, but non-inheritable, results 
+//Ninja.prototype = Person.prototype;
+//console.log( Ninja.prototype ); // dance, dance2が設定されている
+
+Ninja.prototype.hoge = { dance: Person.prototype.dance };
+//console.log( Ninja.prototype ); // danceが設定され，dance2メソッドはなくなってしまう
+
+// Only this maintains the prototype chain
+Ninja.prototype = new Person();
+console.log( Ninja.prototype ); // newすると，testプロパティ，dance, dance2メソッドがNinjaオブジェクトのprototypeプロパティに設定される
+
+var ninja = new Ninja();
+
+console.log( ninja ); // object
+
+window.onload = function(){
+  assert( ninja instanceof Ninja, 
+    "ninja receives functionality from the Ninja prototype" ); 
+  assert( ninja instanceof Person, "... and the Person prototype" ); 
+  assert( ninja instanceof Object, "... and the Object prototype" );
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+function Ninja(){} 
+var ninja = new Ninja(); 
+
+window.onload = function(){
+assert( typeof ninja == "object", 
+  "However the type of the instance is still an object." );  
+assert( ninja instanceof Ninja, 
+  "The object was instantiated properly." ); 
+assert( ninja.constructor == Ninja, 
+  "The ninja object was created by the Ninja function." ); 
+
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

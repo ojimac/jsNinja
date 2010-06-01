@@ -1,0 +1,34 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+function Ninja(){ 
+  this.swung = false; 
+  
+  // Should return true 
+  this.swingSword = function(){ 
+    return !this.swung; 
+  }; 
+} 
+// Should return false, but will be overridden 
+Ninja.prototype.swingSword = function(){ 
+  return this.swung; 
+}; 
+var ninja = new Ninja(); 
+
+window.onload = function(){
+// prototypeで追加したメソッドはインスタンス化したときに同名メソッド
+// があると上書きされてしまう!?
+assert( ninja.swingSword(), 
+  "Calling the instance method, not the prototype method." );
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

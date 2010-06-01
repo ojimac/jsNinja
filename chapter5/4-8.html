@@ -1,0 +1,27 @@
+<html>
+<head>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+<div id="a">I'm going to be removed.</div> 
+<div id="b">Me too!</div> 
+<script> 
+HTMLElement.prototype.remove = function(){ 
+  if ( this.parentNode ) 
+    this.parentNode.removeChild( this ); 
+}; 
+// Old way 
+var a = document.getElementById("a"); 
+setTimeout(function(){
+             a.parentNode.removeChild( a );
+           }, 1000);
+// New way 
+setTimeout(function(){
+             document.getElementById("b").remove();
+           }, 1000);
+</script>
+</body>
+</html>

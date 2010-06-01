@@ -1,0 +1,28 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+Object.prototype.keys = function(){ 
+  var keys = []; 
+  console.log( this ); // debug
+  for ( var i in this ) 
+    keys.push( i ); 
+  return keys; 
+}; 
+var obj = { a: 1, b: 2, c: 3 };
+
+window.onload = function(){
+  assert( obj.keys().length == 4, 
+    "The 3 existing properties plus the new keys method." );
+  console.log( obj ); // debug
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+<ul id="results"></ul>
+</body>
+</html>

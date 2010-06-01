@@ -1,0 +1,24 @@
+<html>
+<head>
+<script src="assert.js"></script>
+<script>
+function Ninja(){ 
+  this.swung = true; 
+} 
+var ninja = new Ninja(); 
+Ninja.prototype.swingSword = function(){ 
+  return this.swung; 
+}; 
+window.onload = function(){
+assert( ninja.swingSword(), "Method exists, even out of order." );
+}
+</script>
+<style>
+  #results li.pass { color: green; }
+  #results li.fail { color: red; }
+</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>
